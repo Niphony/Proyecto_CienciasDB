@@ -1,6 +1,8 @@
-#include<iostream>
+#ifndef NodoAVL
+#define NodoAVL
+NodoAVL
 
-using namespace std;
+
 
 struct Nodo{
   int dato;
@@ -11,17 +13,12 @@ struct Nodo{
 
 class AVLnodo {
 
-
-
 public:
-int NodoAVL(int dato, int altura){
 
   Nodo* nodo1 = new Nodo();
   Nodo* nodo2 = new Nodo();
   
 
-  return 0;
-
-}
-
 };
+
+#endif
