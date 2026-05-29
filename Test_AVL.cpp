@@ -1,34 +1,27 @@
+
 #include <iostream>
 #include <string>
 #include <sstream>
+
 
 #include "Arbol_AVL.h"
 
 using namespace std;
 
-// Función auxiliar para limpiar espacios innecesarios al inicio y al final
-// string removerEspacios(const string& str) {
-//     size_t primero = str.find_first_not_of(" \t");
-//     if (string::npos == primero) {
-//         return "";
-//     }
-//     size_t ultimo = str.find_last_not_of(" \t");
-//     return str.substr(primero, (ultimo - primero + 1));
-// }
-//
 int main() {
-    // Instanciamos el índice usando 'int' para la Clave Primaria (ID)
+    // Instanciamos el índice usando 'int' para la key
     // y 'string' para guardar el contenido completo del registro.
     Arbol<int, string> db;
     string lineaCompleta;
-
+    
+  
     cout << "====================================================" << endl;
     cout << "                 AVL DATABASE CLI                   " << endl;
     cout << "====================================================" << endl;
     cout << "Comandos:" << endl;
     cout << "  insertar <id> <texto o datos del registro>" << endl;
-    cout << "  seleccionar <id>  o  FIND <id>" << endl;
-    cout << "  actualizar <id> <nuevos datos>" << endl;
+    cout << "  seleccionar <id>  o sel <id>" << endl;
+    cout << "  actualizar o act <id> <nuevos datos>" << endl;
     cout << "  borrar <id>" << endl;
     cout << "  orden" << endl;
     cout << "  salir o ctrl+c" << endl;
@@ -37,19 +30,20 @@ int main() {
     while (true) {
       cout << "db> ";
       if (!getline(cin, lineaCompleta)){
+        
         break;
-      }
-      
-        if (lineaCompleta.empty()) continue; // Si presiona Enter vacío, vuelve a preguntar
 
+      }
+    
+
+        if (lineaCompleta.empty()) continue; // Si presiona Enter vacío, vuelve a preguntar
         stringstream ss(lineaCompleta);
         string comando;
         ss >> comando; // Extrae la primera palabra clave (el comando)
 
-        //para mayusculas si algo
-        // for (char &c : comando) c = toupper(c);
+        
         //
-        if (comando == "salir") {
+        if (comando == "salir" || comando == "exit") {
             break;
         }
         else if (comando == "insertar") {
@@ -82,7 +76,7 @@ int main() {
                 cout << "-> Error de sintaxis, coloca bien el comando: " << comando << " <id_entero>" << endl;
             }
         }
-        else if (comando == "actualizar" | comando == "act") {
+        else if (comando == "actualizar" || comando == "act") {
             int id;
             if (ss >> id) {
                 string nuevosDatos;
@@ -125,11 +119,8 @@ int main() {
         }
         else {
             cout << "-> Error: Comando '" << comando << "' no reconocido por el sistema." << endl;
-        }
-        //Aca una implementacion para simular una consola real con la teclita pa arriba
-
-
-
+        }    
+      
     }
 
     return 0;
