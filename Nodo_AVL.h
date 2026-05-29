@@ -1,12 +1,12 @@
 #ifndef NodoAVL
 #define NodoAVL
-NodoAVL
+
 
 
 template<typename N, typename M> //Plantilla
                                  //
 class Nodo{
-  
+public:  
   N key; //Para poder buscar desde el key, coincidencias y demas
   M value; //Valor asociado - Esquema Clave - Valor
 
