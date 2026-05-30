@@ -1,0 +1,1 @@
+La carpeta completa dataset_scritps se pone en la carpeta raiz del proyecto, el proyecto se puede clonar del repositorio, clonar solo la rama master
