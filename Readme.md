@@ -39,7 +39,7 @@ Una vez dentro de la interfaz `db>`, puedes utilizar los siguientes comandos:
 | `actualizar` / `act` | Modifica los datos de un ID existente. | `db> act 101 Juan Alberto Perez` |
 | `borrar` | Elimina un registro existente del árbol. | `db> borrar 101` |
 | `orden` | Muestra todos los registros ordenados por clave. | `db> orden` |
-| `salir` | Termina la ejecución del programa. | `db> salir` |
+| `salir` / `exit` | Termina la ejecución del programa. | `db> salir` |
 
 
 ## Persistencia
