@@ -5,6 +5,7 @@
 
 
 #include "Arbol_AVL.h"
+#include "Persistencia.h"
 
 using namespace std;
 
@@ -12,6 +13,9 @@ int main() {
     // Instanciamos el índice usando 'int' para la key
     // y 'string' para guardar el contenido completo del registro.
     Arbol<int, string> db;
+
+    Persistencia<int,string>::cargar(db,"personas.csv"); // Carga inicial desde el archivo CSV (si existe)
+
     string lineaCompleta;
     
   
@@ -57,6 +61,7 @@ int main() {
                     cout << "-> Error: El contenido del registro no puede estar vacío." << endl;
                 } else {
                     db.insertar(id, registro);
+                    Persistencia<int,string>::guardar(db, "personas.csv");// Guarda después de cada inserción para mantener la persistencia actualizada
                     cout << "-> OK: Registro [" << id << "] indexado en el árbol AVL." << endl;
                 }
             } else {
@@ -89,6 +94,7 @@ int main() {
                     string* registro = db.buscar(id);
                     if (registro != nullptr) {
                         *registro = nuevosDatos; // Modificación directa sobre el nodo usando el puntero
+                        Persistencia<int,string>::guardar(db, "personas.csv");// Guarda después de cada actualización para mantener la persistencia actualizada
                         cout << "-> OK: Registro [" << id << "] actualizado." << endl;
                     } else {
                         cout << "-> Error: El ID " << id << " no existe. Use insertar si desea crearlo." << endl;
@@ -104,6 +110,7 @@ int main() {
                 string* registro = db.buscar(id);
                 if (registro != nullptr) {
                     db.eliminar(id); // Ejecuta el quitar tal y el rebalanceo AVL
+                    Persistencia<int,string>::guardar(db, "personas.csv");// Guarda después de cada eliminación para mantener la persistencia actualizada
                     cout << "-> OK: Registro [" << id << "] eliminado." << endl;
                 } else {
                     cout << "-> Error: No se puede eliminar algo que no exite. "<< id <<" no esta" << endl;
