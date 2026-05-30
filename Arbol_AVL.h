@@ -79,6 +79,7 @@ public: //Publicos para poderlos llamar
     M* buscar(N key);
     void eliminar(N key);
     void orden();
+    Nodo<N,M>* obtenerRaiz();// Método para obtener la raíz del árbol, necesario para la persistencia
 };
 
 
@@ -255,6 +256,11 @@ void Arbol<N,M>::Orden(Nodo<N,M>* nodo) {
 template<typename N, typename M>
 void Arbol<N,M>::orden() {
     Orden(raiz);
+}
+
+template<typename N, typename M>// Método para obtener la raíz del árbol, necesario para la persistencia
+Nodo<N,M>* Arbol<N,M>::obtenerRaiz() { 
+    return raiz;
 }
 
 #endif
